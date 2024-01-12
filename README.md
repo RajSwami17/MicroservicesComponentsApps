@@ -1,0 +1,5 @@
+-> ServiceRegistryApp act as Eureka Server
+-> WelcomeAPI is one individual Microservice
+-> GreetAPI is one individual Microservice
+-> CloudAPIGateway act as APIGateway
+-> SpringBootAdminServer for monitoring microservices.

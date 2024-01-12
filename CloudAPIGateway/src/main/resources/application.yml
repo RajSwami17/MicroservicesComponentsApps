@@ -1,0 +1,34 @@
+eureka:
+  client:
+    register-with-eureka: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+server:
+  port: 3333
+spring:
+  application:
+    name: CloudAPIGateway
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: WelcomeAPI
+          uri: lb://WelcomeAPI
+          predicates:
+            - Path=/welcome
+        - id: GreetAPI
+          uri: lb://GreetAPI
+          predicates:
+            - Path=/greet
